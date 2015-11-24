@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <!-- In some cases you might want to lay a set of information out horizontally where the screen size permits, but collapse the contents horizontally where it does not. This is quite straightforward with flexbox. You can do this by adding the wrap value to the flex-flow property. -->
+    <style>
+    	.horizontal-container {
+		  display: flex;
+		  width: 300px;
+		  flex-flow: row wrap;
+		}
+		.fixed-size {
+		  flex: none;
+		  width: 100px;
+		  background-color: black;
+		  color: white;
+		  text-align: center;
+		}
+    </style>
+  </head>
+  <body>
+
+  	<div id="container" class="horizontal-container">
+	  	<div class="fixed-size">Element 1</div>
+	  	<div class="fixed-size">Element 2</div>
+	  	<div class="fixed-size">Element 3</div>
+  	</div>
+  	<button id="increase-size">Increase container size</button>
+  	<button id="decrease-size">Decrease container size</button>
+
+    <script type="text/javascript">
+		var width = 300;
+
+		document.getElementById('increase-size').onclick=function() {
+		  width += 100;
+		  if (width > 300) width = 300; 
+		  document.getElementById('container').style.width = (width + "px");
+		}
+
+		document.getElementById('decrease-size').onclick=function() {
+		  width -= 100;
+		  if (width < 100) width = 100; 
+		  document.getElementById('container').style.width = (width + "px");
+		}
+    </script>
+  </body>
+</html>

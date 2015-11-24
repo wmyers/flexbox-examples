@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <!-- a mobile-first 3-columns layout with full-width header and footer. And independent from source order utilzing the different value applications of flex-basis-->
+    <style>
+    	.wrapper {
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;  
+		  
+		  -webkit-flex-flow: row wrap;
+		  flex-flow: row wrap;
+		  
+		  font-weight: bold;
+		  text-align: center;
+		}
+
+		/*
+			flex-basis is 100% which forces each item to 
+			be 100% of the length of a line so the elements stack
+			vertically even though the flex-flow is row.
+			nb flex-grow is 1 so they are evenly flexible
+		*/
+		.wrapper > * {
+		  padding: 10px;
+		  flex: 1 100%; 
+		}
+
+		.header {
+		  background: tomato;
+		}
+
+		.footer {
+		  background: lightgreen;
+		}
+
+		.main {
+		  text-align: left;
+		  background: deepskyblue;
+		}
+
+		.aside-1 {
+		  background: gold;
+		}
+
+		.aside-2 {
+		  background: hotpink;
+		}
+
+		/*
+			this makes the asides always have flex-grow: 1; for all layouts >= 600px
+			with flex-basis: auto; meaning that 
+			the remaining space will always be distributed to 
+			other elements with a greater flex-grow (e.g. 100%).
+		*/
+		@media all and (min-width: 600px) {
+		  .aside { flex: 1 auto; }
+		}
+
+		/*
+			this resets the order of the items for all layouts >= 800px
+			with one of the asides moving above the main.
+			the main is then taking a flex-grow of 3, with a flex-basis: 0px;
+			so that the space distribution always happens between itself and the
+			auto-basis-spacing of the asides either side of it.
+			the header and footer consistently stay at 100% length on seperate lines.
+		*/
+		@media all and (min-width: 800px) {
+		  .main    { flex: 3 0px; }
+		  .aside-1 { order: 1; } 
+		  .main    { order: 2; }
+		  .aside-2 { order: 3; }
+		  .footer  { order: 4; }
+		}
+
+		body {
+		  padding: 2em; 
+		}
+
+    </style>
+  </head>
+  <body>
+  <div class="wrapper">
+	  <header class="header">Header</header>
+	  <article class="main">
+	    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>  
+	  </article>
+	  <aside class="aside aside-1">Aside 1</aside>
+	  <aside class="aside aside-2">Aside 2</aside>
+	  <footer class="footer">Footer</footer>
+	</div>
+  </body>
+</html>

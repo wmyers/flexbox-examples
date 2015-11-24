@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <!-- Imagine that you have a page laid out with a header section, a content section, and a footer. The header and footer should have a fixed size, but the content should resize according to available space. This can be done by setting the content's flex property to auto and  flex property on the header, and the footer, to none. -->
+    <style>
+		.vertical-box {
+		  display: flex;
+		  height: 400px;
+		  width: 400px;
+		  flex-flow: column;
+		}
+		.fixed-size {
+		  flex: none;
+		  height: 30px;
+		  background-color: black;
+		  text-align: center;
+		}
+		.flexible-size {
+		  flex: auto;
+		  background-color: white;
+		}
+    </style>
+  </head>
+  <body>
+
+  	<div id="document" class="vertical-box">
+  		<div class="fixed-size"><button id="increase-size">Increase container size</button></div>
+  		<div id="flexible-content" class="flexible-size"></div>
+  		<div class="fixed-size"><button id="decrease-size">Decrease container size</button></div>
+	</div>
+
+
+    <script type="text/javascript">
+	var height = 400;
+	document.getElementById('increase-size').onclick=function() {
+	  height += 10;
+	  if (height > 500) height = 500; 
+	  document.getElementById('document').style.height = (height + "px");
+	}
+
+	document.getElementById('decrease-size').onclick=function() {
+	  height -= 10;
+	  if (height < 300) height = 300; 
+	  document.getElementById('document').style.height = (height + "px");
+	}
+    </script>
+  </body>
+</html>

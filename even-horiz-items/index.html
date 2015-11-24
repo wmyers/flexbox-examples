@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <!-- a list of 6 items, all with a fixed dimensions in a matter of aesthetics but they could be auto-sized. We want them to be evenly and nicely distributed on the horizontal axis so that when we resize the browser, everything is fine (without media queries!) -->
+    <style>
+    	.flex-container {
+		  padding: 0;
+		  margin: 0;
+		  list-style: none;
+		  
+		  display: -webkit-box;
+		  display: -moz-box;
+		  display: -ms-flexbox;
+		  display: -webkit-flex;
+		  display: flex;
+		  
+		  -webkit-flex-flow: row wrap;
+		  justify-content: space-around;
+		}
+
+		.flex-item {
+		  background: tomato;
+		  padding: 5px;
+		  width: 200px;
+		  height: 150px;
+		  margin: 10px 1px 0 1px;
+		  
+		  /*line-height: 150px;*/
+		  color: white;
+		  font-weight: bold;
+		  font-size: 3em;
+		  /*text-align: center;*/
+		  display: inline-flex;
+		}
+
+		.flex-item p {
+			margin: auto;
+		}
+    </style>
+  </head>
+  <body>
+  	<ul class="flex-container">
+	  <li class="flex-item"><p>1</p></li>
+	  <li class="flex-item">2</li>
+	  <li class="flex-item">3</li>
+	  <li class="flex-item">4</li>
+	  <li class="flex-item">5</li>
+	  <li class="flex-item">6</li>
+	</ul>
+  </body>
+</html>
